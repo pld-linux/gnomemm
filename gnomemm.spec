@@ -15,11 +15,10 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	esound-devel
 BuildRequires:	gnome-libs-devel
-BuildRequires:	gtkmm-devel
+BuildRequires:	gtkmm1-devel
 BuildRequires:	imlib-devel
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
-BuildRequires:  libsigc++1-devel
 Requires:	cpp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -39,7 +38,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	gnome-libs-devel
 Requires:	gtk+-devel
-Requires:	gtkmm-devel
+Requires:	gtkmm1-devel
 
 %description devel
 If you are going to write GNOME programs in C++ you will need this
