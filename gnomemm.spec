@@ -1,7 +1,7 @@
 Summary:	C++ interface to GNOME libraries
 Summary(pl):	Interfejs w C++ do bibliotek GNOME
 Name:		gnomemm
-Version:	1.1.19
+Version:	1.1.21
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
