@@ -13,9 +13,9 @@ BuildRequires:	automake
 BuildRequires:	gtkmm-devel >= 1.3.0
 BuildRequires:	libgnomeui-devel
 BuildRequires:	libtool >= 1.4.3
-BuildRequires:  orbitcpp >= 1.3.4
-BuildRequires:  libbonobomm >= 1.3.3
-BuildRequires:  libbonobouimm >= 1.3.4
+BuildRequires:	orbitcpp >= 1.3.4
+BuildRequires:	libbonobomm >= 1.3.3
+BuildRequires:	libbonobouimm >= 1.3.4
 BuildRequires:	zlib-devel
 Requires:	cpp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
