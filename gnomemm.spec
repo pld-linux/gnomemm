@@ -62,7 +62,7 @@ NOCONFIGURE="1" ./autogen.sh
 %configure \
 	--enable-docs
 
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
