@@ -69,7 +69,7 @@ rm -f missing
 libtoolize --copy --force
 aclocal -I %{_aclocaldir}/gnome
 autoconf
-automake -a -c
+automake -a -c -f
 CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %configure \
 	--enable-static=yes
