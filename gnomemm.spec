@@ -2,7 +2,7 @@ Summary:	C++ interface to GNOME libraries
 Summary(pl):	Interfejs w C++ do bibliotek GNOME
 Name:		gnomemm
 Version:	1.2.2
-Release:	2
+Release:	3
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/gtkmm/%{name}-%{version}.tar.gz
@@ -19,6 +19,7 @@ BuildRequires:	gtkmm-devel
 BuildRequires:	imlib-devel
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
+BuildRequires:  libsigc++1-devel
 Requires:	cpp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
