@@ -1,21 +1,23 @@
 Summary:	C++ interface to GNOME libraries
 Summary(pl):	Interfejs w C++ do bibliotek GNOME
 Name:		gnomemm
-Version:	1.3.15
+Version:	1.2.2
 Release:	2
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://dl.sourceforge.net/gtkmm/%{name}-all-%{version}.tar.gz
-# Source0-md5:	998dcd88b2a311f5032f90eb5564db01
+Source0:	http://dl.sourceforge.net/gtkmm/%{name}-%{version}.tar.gz
+# Source0-md5:	2a45f162a68cd4b42881fb72a1dc528e
+Patch0:		%{name}-ac_fix.patch
+Patch1:		%{name}-am_fix.patch
+Patch2:		%{name}-procbar_fix.patch
 URL:		http://gtkmm.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gtkmm-devel >= 1.3.0
-BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
-BuildRequires:	libtool >= 1.4.3
-BuildRequires:	orbitcpp >= 1.3.6-2
-BuildRequires:	libbonobomm >= 1.3.5-3
-BuildRequires:	libbonobouimm >= 1.3.5-2
+BuildRequires:	esound-devel
+BuildRequires:	gnome-libs-devel
+BuildRequires:	gtkmm-devel
+BuildRequires:	imlib-devel
+BuildRequires:	libtool
 BuildRequires:	zlib-devel
 Requires:	cpp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -34,9 +36,9 @@ Summary:	Header files and some examples for gnomemm (gnome--)
 Summary(pl):	Pliki nag³ówkowe i przyk³ady dla gnomemm (gnome--)
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	gtk+2-devel
+Requires:	gnome-libs-devel
+Requires:	gtk+-devel
 Requires:	gtkmm-devel
-Requires:	libgnomeui-devel >= 2.3.3.1-2
 
 %description devel
 If you are going to write GNOME programs in C++ you will need this
@@ -60,21 +62,49 @@ Gnomemm static libraries.
 Biblioteki statyczne gnomemm.
 
 %prep
-%setup -q -n %{name}-all-%{version}
+%setup -q
+#%patch0 -p1
+#%patch1
+%patch2
 
 %build
-CXXFLAGS="%{rpmcflags}"
-%configure \
+#rm -f missing
+#%{__libtoolize}
+#aclocal -I %{_aclocaldir}/gnome
+#%{__autoconf}
+#%{__automake}
+CXXFLAGS="%{rpmcflags} -fno-exceptions"
+%configure2_13 \
 	--enable-static=yes
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT/usr/src/examples/%{name}
+
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	m4datadir=%{_aclocaldir} \
-	pkgconfigdir=%{_pkgconfigdir}
+	DESTDIR=$RPM_BUILD_ROOT
+
+cp -dpr examples/* $RPM_BUILD_ROOT/usr/src/examples/%{name}
+
+# --- start examples ---
+cat $RPM_BUILD_ROOT%{_examplesdir}/%{name}/examples.conf.in \
+	| sed 's/@SHELL@/\/bin\/sh/g' \
+	| sed 's/@CFLAGS@/%{rpmcflags}/g' \
+	| sed 's/@CPPFLAGS@/`gnome-config --cflags gnome`/g' \
+	| sed 's/@CXXFLAGS@/%{rpmcflags}/g' \
+	| sed 's/@CXX@/c++/g' \
+	| sed 's/@CXXLD@/c++/g' \
+	| sed 's/@GTKMM_CFLAGS@/`gtkmm-config --cflags`/g' \
+	| sed 's/@GTKMM_LIBS@/`gtkmm-config --libs`/g' \
+	| sed 's/@GNOME_INCLUDEDIR@/`gnome-config --cflags gnome`/g' \
+	| sed 's/@GNOMEUI_LIBS@ @GNOME_LIBDIR@/`gnome-config --libs gnome gnomeui`/g' \
+	| sed 's/@LIBTOOL@/$(SHELL) \/usr\/bin\/libtool/g' \
+	| sed 's/..\/..\/src\/gnome--\/libgnomemm.la/\/usr\/X11R6\/lib\/libgnomemm.la/g' \
+	| sed 's/top_builddir = ..\/../top_builddir = ./g' \
+	> $RPM_BUILD_ROOT%{_examplesdir}/%{name}/examples.conf
+# --- end examples ---
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -84,44 +114,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libgnomemm*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %doc README ChangeLog AUTHORS NEWS
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%{_pkgconfigdir}/*
-%{_includedir}/*
-#%%{_examplesdir}/%{name}
+%{_libdir}/gnomemmConf.sh
 
-%dir %{_libdir}/libbonobouimm-2.0
-%dir %{_libdir}/libbonobomm-2.0
-%dir %{_libdir}/libgnomeuimm-2.0
-%dir %{_libdir}/libgnomeuimm-2.0/proc
-%dir %{_libdir}/libgnomemm-2.0
-%dir %{_libdir}/libgnomemm-2.0/proc
-%dir %{_libdir}/libgnomecanvasmm-2.0
-%dir %{_libdir}/libgnomecanvasmm-2.0/proc
-%dir %{_libdir}/libglademm-2.0
-%dir %{_libdir}/libglademm-2.0/proc
-%dir %{_libdir}/gtkmm-2.0/proc
-%dir %{_libdir}/gconfmm-2.0
-%dir %{_libdir}/gconfmm-2.0/proc
+%{_examplesdir}/%{name}
 
-%{_libdir}/libbonobouimm-*/include
-%{_libdir}/libbonobomm-*/include
-%{_libdir}/libgnomeuimm-*/include
-%{_libdir}/libgnomeuimm-*/proc/m4
-%{_libdir}/libgnomemm-*/include
-%{_libdir}/libgnomemm-*/proc/m4
-%{_libdir}/libgnomecanvasmm-*/include
-%{_libdir}/libgnomecanvasmm-*/proc/m4
-%{_libdir}/libglademm-*/include
-%{_libdir}/libglademm-*/proc/m4
-%{_libdir}/gtkmm-*/proc/m4
-%{_libdir}/gconfmm-*/include
-%{_libdir}/gconfmm-*/proc/m4
+%{_includedir}/*.h
+%{_includedir}/gnome--
 
 %files static
 %defattr(644,root,root,755)
