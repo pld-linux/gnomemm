@@ -10,7 +10,7 @@ URL:		http://gtkmm.sourceforge.net/
 Requires:	cpp
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gtkmm-devel
+BuildRequires:	gtkmm-devel >= 1.3.0
 BuildRequires:	libgnomeui-devel
 BuildRequires:	libtool >= 1.4.3
 BuildRequires:	zlib-devel
