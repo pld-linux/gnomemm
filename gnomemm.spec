@@ -5,10 +5,9 @@ Version:	1.3.15
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://ftp1.sourceforge.net/gtkmm/%{name}-all-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/gtkmm/%{name}-all-%{version}.tar.gz
 # Source0-md5:	998dcd88b2a311f5032f90eb5564db01
 URL:		http://gtkmm.sourceforge.net/
-Requires:	cpp
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gtkmm-devel >= 1.3.0
@@ -18,6 +17,7 @@ BuildRequires:  orbitcpp >= 1.3.4
 BuildRequires:  libbonobomm >= 1.3.3
 BuildRequires:  libbonobouimm >= 1.3.4
 BuildRequires:	zlib-devel
+Requires:	cpp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 
