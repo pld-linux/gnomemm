@@ -9,7 +9,7 @@ Group:		X11/Libraries
 Group(pl):	X11/Biblioteki
 License:	GPL
 Source0:	%{name}-%{version}.tar.gz
-URL:		http://gtkmm.sourceforge.net
+URL:		http://gtkmm.sourceforge.net/
 BuildRequires:	libstdc++-devel
 BuildRequires:	libsigc++-devel
 BuildRequires:	gtk+-devel
@@ -23,31 +23,32 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_mandir		%{_prefix}/man
 
 %description
-Gnomemm (gnome--) is a C++ interface to GNOME libraries. If you want to run
-GNOME programs written in C++ you need gnomemm.
+Gnomemm (gnome--) is a C++ interface to GNOME libraries. If you want
+to run GNOME programs written in C++ you need gnomemm.
 
 %description -l pl
-Gnomemm (gnome--) jest interfejsem do bibliotek GNOME dla C++. Je¶li chcesz
-uruchamiaæ programy GNOME napisane w C++ bêdziesz potrzebowa³ tych bibliotek.
+Gnomemm (gnome--) jest interfejsem do bibliotek GNOME dla C++. Je¶li
+chcesz uruchamiaæ programy GNOME napisane w C++ bêdziesz potrzebowa³
+tych bibliotek.
 
 %package devel
 Summary:	Header files and some examples for gnomemm (gnome--)
 Summary(pl):	Pliki nag³ówkowe i przyk³ady dla gnomemm (gnome--)
-Group:		X11/Developement/Libraries
-Group(pl):	X11/Libraries/Biblioteki
-Requires:	%{name} = %{version}
+Group:		X11/Development/Libraries
+OARequires:	%{name} = %{version}
 Requires:	gnome-libs-devel
 
 %description devel
-If you are going to write GNOME programs in C++ you will need this package.
-It contains all header files, libraries and some examples. Unfortunatelly there
-is no documentation. For more information check http://gtkmm.sourceforge.net.
+If you are going to write GNOME programs in C++ you will need this
+package. It contains all header files, libraries and some examples.
+Unfortunatelly there is no documentation. For more information check
+http://gtkmm.sourceforge.net.
 
 %description -l pl devel
-Je¶li zamierzasz pisaæ programy GNOME w C++ bêdziesz potrzebowa³ tego pakietu.
-Zawiera on niezbêdne nag³ówki, biblioteki i trochê przyk³adów. Niestety
-narazie nie zawiera ¿adnej dokumentacji. Wiêcej informacji znajdziesz na
-http://gtkmm.sourceforge.net.
+Je¶li zamierzasz pisaæ programy GNOME w C++ bêdziesz potrzebowa³ tego
+pakietu. Zawiera on niezbêdne nag³ówki, biblioteki i trochê
+przyk³adów. Niestety narazie nie zawiera ¿adnej dokumentacji. Wiêcej
+informacji znajdziesz na http://gtkmm.sourceforge.net.
 
 %prep
 %setup -q -n gnome--
@@ -64,6 +65,7 @@ NOCONFIGURE="1" ./autogen.sh
 make
 
 %install
+rm -rf $RPM_BUILD_ROOT
 
 make install DESTDIR=$RPM_BUILD_ROOT
 
