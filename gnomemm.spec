@@ -2,7 +2,7 @@ Summary:	C++ interface to GNOME libraries
 Summary(pl):	Interfejs w C++ do bibliotek GNOME
 Name:		gnomemm
 Version:	1.3.15
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/gtkmm/%{name}-all-%{version}.tar.gz
@@ -11,15 +11,14 @@ URL:		http://gtkmm.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gtkmm-devel >= 1.3.0
-BuildRequires:	libgnomeui-devel
+BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libtool >= 1.4.3
-BuildRequires:	orbitcpp >= 1.3.4
-BuildRequires:	libbonobomm >= 1.3.3
-BuildRequires:	libbonobouimm >= 1.3.4
+BuildRequires:	orbitcpp >= 1.3.6-2
+BuildRequires:	libbonobomm >= 1.3.5-3
+BuildRequires:	libbonobouimm >= 1.3.5-2
 BuildRequires:	zlib-devel
 Requires:	cpp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 Gnomemm (gnome--) is a C++ interface to GNOME libraries. If you want
@@ -37,7 +36,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	gtk+2-devel
 Requires:	gtkmm-devel
-Requires:	libgnomeui-devel
+Requires:	libgnomeui-devel >= 2.3.3.1-2
 
 %description devel
 If you are going to write GNOME programs in C++ you will need this
