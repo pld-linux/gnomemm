@@ -70,8 +70,8 @@ Biblioteki statyczne gnomemm.
 rm -f missing
 libtoolize --copy --force
 aclocal -I %{_aclocaldir}/gnome
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %configure \
 	--enable-static=yes
