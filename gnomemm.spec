@@ -7,9 +7,13 @@ License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
 Group(es):	X11/Bibliotecas
+Group(fr):	X11/Librairies
 Group(pl):	X11/Biblioteki
+Group(pt_BR):	X11/Bibliotecas
+Group(ru):	X11/Библиотеки
+Group(uk):	X11/Б╕бл╕отеки
 Source0:	http://ftp1.sourceforge.net/gtkmm/%{name}-%{version}.tar.gz
-PAtch0:		gnomemm-ac_fix.patch
+Patch0:		%{name}-ac_fix.patch
 URL:		http://gtkmm.sourceforge.net/
 Requires:	cpp
 BuildRequires:	esound-devel
@@ -17,6 +21,9 @@ BuildRequires:	gnome-libs-devel
 BuildRequires:	imlib-devel
 BuildRequires:	zlib-devel
 BuildRequires:	gtkmm-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -35,7 +42,12 @@ Summary:	Header files and some examples for gnomemm (gnome--)
 Summary(pl):	Pliki nagЁСwkowe i przykЁady dla gnomemm (gnome--)
 Group:		X11/Development/Libraries
 Group(de):	X11/Entwicklung/Libraries
+Group(es):	X11/Desarrollo/Bibliotecas
+Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
+Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(ru):	X11/Разработка/Библиотеки
+Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Requires:	gtk+-devel
 Requires:	gtkmm-devel
@@ -55,7 +67,12 @@ Summary:	gnomemm static libraries
 Summary(pl):	Biblioteki statyczne gnomemm
 Group:		X11/Development/Libraries
 Group(de):	X11/Entwicklung/Libraries
+Group(es):	X11/Desarrollo/Bibliotecas
+Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
+Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(ru):	X11/Разработка/Библиотеки
+Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
@@ -109,12 +126,11 @@ cat $RPM_BUILD_ROOT%{_examplesdir}/%{name}/examples.conf.in \
 	> $RPM_BUILD_ROOT%{_examplesdir}/%{name}/examples.conf
 # --- end examples ---
 
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
