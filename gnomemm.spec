@@ -36,6 +36,7 @@ Summary(pl):	Pliki nag³ówkowe i przyk³ady dla gnomemm (gnome--)
 Group:		X11/Developement/Libraries
 Group(pl):	X11/Libraries/Biblioteki
 Requires:	%{name} = %{version}
+Requires:	gnome-libs-devel
 
 %description devel
 If you are going to write GNOME programs in C++ you will need this package.
