@@ -1,0 +1,21 @@
+--- src/procbar.gen_h~	Sat Jul 13 19:21:06 2002
++++ src/procbar.gen_h	Sat Jul 13 19:24:18 2002
+@@ -42,7 +42,7 @@
+ 
+   ProcBar(const Gtk::Label &label,
+ 		const vector<Gdk_Color*> &colors,
+-		gint (*cb)());
++		gint (*cb)(gpointer));
+ 
+   void set_values (const vector<unsigned> &values);
+ 
+@@ -72,7 +72,7 @@
+ 
+ ProcBar::ProcBar(const Gtk::Label &label,
+ 			     const vector<Gdk_Color*> &colors,
+-			     gint (*cb)())
++			     gint (*cb)(gpointer))
+   : Gtk::HBox(GTK_HBOX(gtk_object_new(get_type(),0))),
+     colors_(0)
+ {
+
