@@ -12,7 +12,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gtkmm-devel
 BuildRequires:	libgnomeui-devel
-BuildRequires:	libtool
+BuildRequires:	libtool >= 1.4.3
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
