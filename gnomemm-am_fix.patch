@@ -1,0 +1,24 @@
+--- src/build_sources/Makefile.am~	Sun May 13 07:02:48 2001
++++ src/build_sources/Makefile.am	Sat Apr 20 21:33:00 2002
+@@ -6,8 +6,8 @@
+ gensourcedir=$(top_builddir)/src/gnome--
+ 
+ gnomemmhwithdirs = $(GEN_H_FILES:.gen_h=.h)
+-gnomemmh = $(gnomemmhwithdirs)
+-gnomemmc = $(gnomemmh:.h=.cc) gnome--.cc
++#gnomemmh = $(gnomemmhwithdirs)
++gnomemmc = $(gnomemmhwithdirs:.h=.cc) gnome--.cc
+ 
+ gnomemmgenh = $(patsubst %.gen_h,$(srcdir)/../%.gen_h,$(gnomemmsources))
+ 
+--- src/gnome--/Makefile.am~	Mon May 14 18:28:48 2001
++++ src/gnome--/Makefile.am	Sat Apr 20 21:46:46 2002
+@@ -7,7 +7,7 @@
+            $(GTKMM_CFLAGS) \
+ 	   `gnome-config gnomeui --cflags`
+ 
+-gnomemmhwithdirs = $(GNOME_GEN_H_FILES:.gen_h=.h)
++gnomemmhwithdirs = $(GEN_H_FILES:.gen_h=.h)
+ gnomemmla = $(gnomemmh:.h=.lo)
+ gnomemmh = $(gnomemmhwithdirs)
+ gnomemmc = wrap.cc $(gnomemmh:.h=.cc) gnome--.cc
