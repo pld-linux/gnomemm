@@ -1,24 +1,19 @@
 Summary:	C++ interface to GNOME libraries
 Summary(pl):	Interfejs w C++ do bibliotek GNOME
 Name:		gnomemm
-Version:	1.2.2
-Release:	2
+Version:	1.3.10
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://ftp1.sourceforge.net/gtkmm/%{name}-%{version}.tar.gz
-Patch0:		%{name}-ac_fix.patch
-Patch1:		%{name}-am_fix.patch
-Patch2:		%{name}-procbar_fix.patch
+Source0:	http://ftp1.sourceforge.net/gtkmm/%{name}-all-%{version}.tar.gz
 URL:		http://gtkmm.sourceforge.net/
 Requires:	cpp
-BuildRequires:	esound-devel
-BuildRequires:	gnome-libs-devel
-BuildRequires:	imlib-devel
-BuildRequires:	zlib-devel
-BuildRequires:	gtkmm-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gtkmm-devel
+BuildRequires:	libgnomeui-devel
 BuildRequires:	libtool
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -37,9 +32,9 @@ Summary:	Header files and some examples for gnomemm (gnome--)
 Summary(pl):	Pliki nag³ówkowe i przyk³ady dla gnomemm (gnome--)
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	gtk+-devel
+Requires:	gtk+2-devel
 Requires:	gtkmm-devel
-Requires:	gnome-libs-devel
+Requires:	libgnomeui-devel
 
 %description devel
 If you are going to write GNOME programs in C++ you will need this
@@ -63,49 +58,21 @@ Gnomemm static libraries.
 Biblioteki statyczne gnomemm.
 
 %prep
-%setup -q
-#%patch0 -p1
-#%patch1
-%patch2
+%setup -q -n %{name}-all-%{version}
 
 %build
-#rm -f missing
-#%{__libtoolize}
-#aclocal -I %{_aclocaldir}/gnome
-#%{__autoconf}
-#%{__automake}
-CXXFLAGS="%{rpmcflags} -fno-exceptions"
-%configure2_13 \
+CXXFLAGS="%{rpmcflags}"
+%configure \
 	--enable-static=yes
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT/usr/src/examples/%{name}
-
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-
-cp -dpr examples/* $RPM_BUILD_ROOT/usr/src/examples/%{name}
-
-# --- start examples ---
-cat $RPM_BUILD_ROOT%{_examplesdir}/%{name}/examples.conf.in \
-	| sed 's/@SHELL@/\/bin\/sh/g' \
-	| sed 's/@CFLAGS@/-O2/g' \
-	| sed 's/@CPPFLAGS@/`gnome-config --cflags gnome`/g' \
-	| sed 's/@CXXFLAGS@/-O2/g' \
-	| sed 's/@CXX@/c++/g' \
-	| sed 's/@CXXLD@/c++/g' \
-	| sed 's/@GTKMM_CFLAGS@/`gtkmm-config --cflags`/g' \
-	| sed 's/@GTKMM_LIBS@/`gtkmm-config --libs`/g' \
-	| sed 's/@GNOME_INCLUDEDIR@/`gnome-config --cflags gnome`/g' \
-	| sed 's/@GNOMEUI_LIBS@ @GNOME_LIBDIR@/`gnome-config --libs gnome gnomeui`/g' \
-	| sed 's/@LIBTOOL@/$(SHELL) \/usr\/bin\/libtool/g' \
-	| sed 's/..\/..\/src\/gnome--\/libgnomemm.la/\/usr\/X11R6\/lib\/libgnomemm.la/g' \
-	| sed 's/top_builddir = ..\/../top_builddir = ./g' \
-	> $RPM_BUILD_ROOT%{_examplesdir}/%{name}/examples.conf
-# --- end examples ---
+	DESTDIR=$RPM_BUILD_ROOT \
+	m4datadir=%{_aclocaldir} \
+	pkgconfigdir=%{_pkgconfigdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -115,19 +82,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgnomemm*.so.*.*
+%attr(755,root,root) %{_libdir}/libg*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %doc README ChangeLog AUTHORS NEWS
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
-%{_libdir}/gnomemmConf.sh
-
-%{_examplesdir}/%{name}
-
-%{_includedir}/*.h
-%{_includedir}/gnome--
+%{_pkgconfigdir}/*
+%{_includedir}/*
+#%{_examplesdir}/%{name}
 
 %files static
 %defattr(644,root,root,755)
