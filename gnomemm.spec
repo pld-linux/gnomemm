@@ -5,13 +5,6 @@ Version:	1.2.1
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Group(de):	X11/Libraries
-Group(es):	X11/Bibliotecas
-Group(fr):	X11/Librairies
-Group(pl):	X11/Biblioteki
-Group(pt_BR):	X11/Bibliotecas
-Group(ru):	X11/Библиотеки
-Group(uk):	X11/Б╕бл╕отеки
 Source0:	http://ftp1.sourceforge.net/gtkmm/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ac_fix.patch
 URL:		http://gtkmm.sourceforge.net/
@@ -41,13 +34,6 @@ tych bibliotek.
 Summary:	Header files and some examples for gnomemm (gnome--)
 Summary(pl):	Pliki nagЁСwkowe i przykЁady dla gnomemm (gnome--)
 Group:		X11/Development/Libraries
-Group(de):	X11/Entwicklung/Libraries
-Group(es):	X11/Desarrollo/Bibliotecas
-Group(fr):	X11/Development/Librairies
-Group(pl):	X11/Programowanie/Biblioteki
-Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
-Group(ru):	X11/Разработка/Библиотеки
-Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Requires:	gtk+-devel
 Requires:	gtkmm-devel
@@ -66,13 +52,6 @@ przykЁadСw.
 Summary:	gnomemm static libraries
 Summary(pl):	Biblioteki statyczne gnomemm
 Group:		X11/Development/Libraries
-Group(de):	X11/Entwicklung/Libraries
-Group(es):	X11/Desarrollo/Bibliotecas
-Group(fr):	X11/Development/Librairies
-Group(pl):	X11/Programowanie/Biblioteki
-Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
-Group(ru):	X11/Разработка/Библиотеки
-Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
