@@ -16,7 +16,6 @@ BuildRequires:	libtool >= 1.4.3
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
 
 %description
 Gnomemm (gnome--) is a C++ interface to GNOME libraries. If you want
