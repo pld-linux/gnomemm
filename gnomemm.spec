@@ -77,8 +77,6 @@ export LDFLAGS CXXFLAGS
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/usr/src/examples/%{name}
-install -d $RPM_BUILD_ROOT/%{_bindir}
-install src/gnomemmConf.sh $RPM_BUILD_ROOT/%{_bindir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -124,7 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc /usr/src/examples/%{name}
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
-%attr(755,root,root) %{_bindir}/*
+%{_libdir}/gnomemmConf.sh
 
 %{_includedir}/*.h
 %{_includedir}/gnome--
