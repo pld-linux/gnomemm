@@ -90,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %{_pkgconfigdir}/*
 %{_includedir}/*
-#%{_examplesdir}/%{name}
+#%%{_examplesdir}/%{name}
 
 %files static
 %defattr(644,root,root,755)
