@@ -7,6 +7,7 @@ License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp1.sourceforge.net/gtkmm/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ac_fix.patch
+Patch1:		%{name}-am_fix.patch
 URL:		http://gtkmm.sourceforge.net/
 Requires:	cpp
 BuildRequires:	esound-devel
@@ -63,6 +64,7 @@ Biblioteki statyczne gnomemm.
 %prep
 %setup -q
 %patch0 -p1
+%patch1
 
 %build
 rm -f missing
