@@ -43,7 +43,7 @@ Requires:	gnome-libs-devel
 If you are going to write GNOME programs in C++ you will need this
 package. It contains all header files, libraries and some examples.
 
-%description -l pl devel
+%description devel -l pl
 Je¶li zamierzasz pisaæ programy GNOME w C++ bêdziesz potrzebowa³ tego
 pakietu. Zawiera on niezbêdne nag³ówki, biblioteki i trochê
 przyk³adów.
@@ -57,7 +57,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 Gnomemm static libraries.
 
-%description -l pl static
+%description static -l pl
 Biblioteki statyczne gnomemm.
 
 %prep
@@ -117,7 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz 
+%doc *.gz
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_libdir}/gnomemmConf.sh
