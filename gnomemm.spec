@@ -6,6 +6,7 @@ Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp1.sourceforge.net/gtkmm/%{name}-all-%{version}.tar.gz
+# Source0-md5:	998dcd88b2a311f5032f90eb5564db01
 URL:		http://gtkmm.sourceforge.net/
 Requires:	cpp
 BuildRequires:	autoconf
