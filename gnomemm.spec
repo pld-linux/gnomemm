@@ -1,7 +1,7 @@
 Summary:	C++ interface to GNOME libraries
 Summary(pl):	Interfejs w C++ do bibliotek GNOME
 Name:		gnomemm
-Version:	1.2.1
+Version:	1.2.2
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
@@ -84,6 +84,8 @@ install -d $RPM_BUILD_ROOT/usr/src/examples/%{name}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+cp src/gnome--/*.h $RPM_BUILD_ROOT/usr/X11R6/include/gnome--
 
 cp -dpr examples/* $RPM_BUILD_ROOT/usr/src/examples/%{name}
 
