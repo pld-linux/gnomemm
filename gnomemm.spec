@@ -2,12 +2,13 @@ Summary:	C++ interface to GNOME libraries
 Summary(pl):	Interfejs w C++ do bibliotek GNOME
 Name:		gnomemm
 Version:	1.2.2
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp1.sourceforge.net/gtkmm/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ac_fix.patch
 Patch1:		%{name}-am_fix.patch
+Patch2:		%{name}-procbar_fix.patch
 URL:		http://gtkmm.sourceforge.net/
 Requires:	cpp
 BuildRequires:	esound-devel
@@ -63,17 +64,18 @@ Biblioteki statyczne gnomemm.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1
+#%patch0 -p1
+#%patch1
+%patch2
 
 %build
-rm -f missing
-%{__libtoolize}
-aclocal -I %{_aclocaldir}/gnome
-%{__autoconf}
-%{__automake}
+#rm -f missing
+#%{__libtoolize}
+#aclocal -I %{_aclocaldir}/gnome
+#%{__autoconf}
+#%{__automake}
 CXXFLAGS="%{rpmcflags} -fno-exceptions"
-%configure \
+%configure2_13 \
 	--enable-static=yes
 %{__make}
 
@@ -85,11 +87,7 @@ install -d $RPM_BUILD_ROOT/usr/src/examples/%{name}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cp src/gnome--/*.h $RPM_BUILD_ROOT/usr/X11R6/include/gnome--
-
 cp -dpr examples/* $RPM_BUILD_ROOT/usr/src/examples/%{name}
-
-gzip -9nf README ChangeLog AUTHORS NEWS
 
 # --- start examples ---
 cat $RPM_BUILD_ROOT%{_examplesdir}/%{name}/examples.conf.in \
@@ -121,7 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz
+%doc README ChangeLog AUTHORS NEWS
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_libdir}/gnomemmConf.sh
