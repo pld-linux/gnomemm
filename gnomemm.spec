@@ -1,10 +1,11 @@
 Summary:	C++ interface to GNOME libraries
 Summary(pl):	Interfejs w C++ do bibliotek GNOME
 Name:		gnomemm
-Version:	1.1.10
+Version:	1.1.12
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
+Group(de):	X11/Libraries
 Group(pl):	X11/Biblioteki
 Source0:	ftp://download.sourceforge.net/pub/sourceforge/gtkmm/%{name}-%{version}.tar.gz
 URL:		http://gtkmm.sourceforge.net/
@@ -31,6 +32,7 @@ tych bibliotek.
 Summary:	Header files and some examples for gnomemm (gnome--)
 Summary(pl):	Pliki nag³ówkowe i przyk³ady dla gnomemm (gnome--)
 Group:		X11/Development/Libraries
+Group(de):	X11/Entwicklung/Libraries
 Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 Requires:	gtk+-devel
@@ -53,6 +55,7 @@ informacji znajdziesz na http://gtkmm.sourceforge.net.
 Summary:	gnomemm static libraries
 Summary(pl):	Biblioteki statyczne gnomemm
 Group:		X11/Development/Libraries
+Group(de):	X11/Entwicklung/Libraries
 Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
@@ -66,9 +69,8 @@ Biblioteki statyczne gnomemm.
 %setup -q
 
 %build
-LDFLAGS="-s"
 CXXFLAGS="$RPM_OPT_FLAGS -fno-exceptions"
-export LDFLAGS CXXFLAGS
+export CXXFLAGS
 %configure \
 	--enable-static=yes
 %{__make}
