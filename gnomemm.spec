@@ -1,13 +1,13 @@
 Summary:	C++ interface to GNOME libraries
 Summary(pl):	Interfejs w C++ do bibliotek GNOME
 Name:		gnomemm
-Version:	1.1.15
+Version:	1.1.16
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
 Group(pl):	X11/Biblioteki
-Source0:	ftp://download.sourceforge.net/pub/sourceforge/gtkmm/%{name}-%{version}.tar.gz
+Source0:	http://ftp1.sourceforge.net/gtkmm/%{name}-%{version}.tar.gz
 URL:		http://gtkmm.sourceforge.net/
 Requires:	cpp
 BuildRequires:	esound-devel
