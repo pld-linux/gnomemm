@@ -1,0 +1,10 @@
+--- gnomemm-1.2.1/configure.in~	Fri Aug  3 22:00:29 2001
++++ gnomemm-1.2.1/configure.in	Thu Aug  9 00:30:06 2001
+@@ -42,7 +42,6 @@
+ dnl Specify a configuration file
+ AM_CONFIG_HEADER(config.h)
+ AM_MAINTAINER_MODE
+-AM_ACLOCAL_INCLUDE(macros)
+ 
+ #########################################################################
+ #  Configure arguments 
