@@ -2,7 +2,7 @@ Summary:	C++ interface to GNOME libraries
 Summary(pl):	Interfejs w C++ do bibliotek GNOME
 Name:		gnomemm
 Version:	1.1.12
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
@@ -70,7 +70,6 @@ Biblioteki statyczne gnomemm.
 
 %build
 CXXFLAGS="$RPM_OPT_FLAGS -fno-exceptions"
-export CXXFLAGS
 %configure \
 	--enable-static=yes
 %{__make}
@@ -84,8 +83,6 @@ install -d $RPM_BUILD_ROOT/usr/src/examples/%{name}
 	DESTDIR=$RPM_BUILD_ROOT
 
 cp -dpr examples/* $RPM_BUILD_ROOT/usr/src/examples/%{name}
-
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
 gzip -9nf README ChangeLog AUTHORS NEWS
 
