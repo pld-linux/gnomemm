@@ -9,6 +9,7 @@ Group(de):	X11/Libraries
 Group(es):	X11/Bibliotecas
 Group(pl):	X11/Biblioteki
 Source0:	http://ftp1.sourceforge.net/gtkmm/%{name}-%{version}.tar.gz
+PAtch0:		gnomemm-ac_fix.patch
 URL:		http://gtkmm.sourceforge.net/
 Requires:	cpp
 BuildRequires:	esound-devel
@@ -65,8 +66,14 @@ Biblioteki statyczne gnomemm.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+rm -f missing
+libtoolize --copy --force
+aclocal -I %{_aclocaldir}/gnome
+autoconf
+automake -a -c
 CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %configure \
 	--enable-static=yes
