@@ -1,8 +1,8 @@
 Summary:	C++ interface to GNOME libraries
 Summary(pl):	Interfejs w C++ do bibliotek GNOME
 Name:		gnomemm
-Version:	1.1.12
-Release:	3
+Version:	1.1.14
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
@@ -42,14 +42,11 @@ Requires:	gnome-libs-devel
 %description devel
 If you are going to write GNOME programs in C++ you will need this
 package. It contains all header files, libraries and some examples.
-Unfortunatelly there is no documentation. For more information check
-http://gtkmm.sourceforge.net.
 
 %description -l pl devel
 Je¶li zamierzasz pisaæ programy GNOME w C++ bêdziesz potrzebowa³ tego
 pakietu. Zawiera on niezbêdne nag³ówki, biblioteki i trochê
-przyk³adów. Niestety narazie nie zawiera ¿adnej dokumentacji. Wiêcej
-informacji znajdziesz na http://gtkmm.sourceforge.net.
+przyk³adów.
 
 %package static
 Summary:	gnomemm static libraries
@@ -87,7 +84,7 @@ cp -dpr examples/* $RPM_BUILD_ROOT/usr/src/examples/%{name}
 gzip -9nf README ChangeLog AUTHORS NEWS
 
 # --- start examples ---
-cat $RPM_BUILD_ROOT/usr/src/examples/%{name}/examples.conf.in \
+cat $RPM_BUILD_ROOT%{_examplesdir}/%{name}/examples.conf.in \
 	| sed 's/@SHELL@/\/bin\/sh/g' \
 	| sed 's/@CFLAGS@/-O2/g' \
 	| sed 's/@CPPFLAGS@/`gnome-config --cflags gnome`/g' \
@@ -101,7 +98,7 @@ cat $RPM_BUILD_ROOT/usr/src/examples/%{name}/examples.conf.in \
 	| sed 's/@LIBTOOL@/$(SHELL) \/usr\/bin\/libtool/g' \
 	| sed 's/..\/..\/src\/gnome--\/libgnomemm.la/\/usr\/X11R6\/lib\/libgnomemm.la/g' \
 	| sed 's/top_builddir = ..\/../top_builddir = ./g' \
-	> $RPM_BUILD_ROOT/usr/src/examples/%{name}/examples.conf
+	> $RPM_BUILD_ROOT%{_examplesdir}/%{name}/examples.conf
 # --- end examples ---
 
 
@@ -118,10 +115,11 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc *.gz 
-%doc /usr/src/examples/%{name}
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_libdir}/gnomemmConf.sh
+
+%{_examplesdir}/%{name}
 
 %{_includedir}/*.h
 %{_includedir}/gnome--
