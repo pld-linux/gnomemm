@@ -35,7 +35,7 @@ tych bibliotek.
 Summary:	Header files and some examples for gnomemm (gnome--)
 Summary(pl):	Pliki nag³ówkowe i przyk³ady dla gnomemm (gnome--)
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	gnome-libs-devel
 Requires:	gtk+-devel
 Requires:	gtkmm1-devel
@@ -53,7 +53,7 @@ przyk³adów.
 Summary:	gnomemm static libraries
 Summary(pl):	Biblioteki statyczne gnomemm
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Gnomemm static libraries.
