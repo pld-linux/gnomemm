@@ -81,12 +81,12 @@ CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT/usr/src/examples/%{name}
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-cp -dpr examples/* $RPM_BUILD_ROOT/usr/src/examples/%{name}
+cp -dpr examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}
 
 # --- start examples ---
 cat $RPM_BUILD_ROOT%{_examplesdir}/%{name}/examples.conf.in \
