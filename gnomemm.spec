@@ -1,5 +1,5 @@
 Summary:	C++ interface to GNOME libraries
-Summary(pl):	Interfejs w C++ do bibliotek GNOME
+Summary(pl.UTF-8):   Interfejs w C++ do bibliotek GNOME
 Name:		gnomemm
 Version:	1.2.2
 Release:	3
@@ -26,14 +26,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Gnomemm (gnome--) is a C++ interface to GNOME libraries. If you want
 to run GNOME programs written in C++ you need gnomemm.
 
-%description -l pl
-Gnomemm (gnome--) jest interfejsem do bibliotek GNOME dla C++. Je¶li
-chcesz uruchamiaæ programy GNOME napisane w C++ bêdziesz potrzebowa³
+%description -l pl.UTF-8
+Gnomemm (gnome--) jest interfejsem do bibliotek GNOME dla C++. JeÅ›li
+chcesz uruchamiaÄ‡ programy GNOME napisane w C++ bÄ™dziesz potrzebowaÅ‚
 tych bibliotek.
 
 %package devel
 Summary:	Header files and some examples for gnomemm (gnome--)
-Summary(pl):	Pliki nag³ówkowe i przyk³ady dla gnomemm (gnome--)
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe i przykÅ‚ady dla gnomemm (gnome--)
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gnome-libs-devel
@@ -44,21 +44,21 @@ Requires:	gtkmm1-devel
 If you are going to write GNOME programs in C++ you will need this
 package. It contains all header files, libraries and some examples.
 
-%description devel -l pl
-Je¶li zamierzasz pisaæ programy GNOME w C++ bêdziesz potrzebowa³ tego
-pakietu. Zawiera on niezbêdne nag³ówki, biblioteki i trochê
-przyk³adów.
+%description devel -l pl.UTF-8
+JeÅ›li zamierzasz pisaÄ‡ programy GNOME w C++ bÄ™dziesz potrzebowaÅ‚ tego
+pakietu. Zawiera on niezbÄ™dne nagÅ‚Ã³wki, biblioteki i trochÄ™
+przykÅ‚adÃ³w.
 
 %package static
 Summary:	gnomemm static libraries
-Summary(pl):	Biblioteki statyczne gnomemm
+Summary(pl.UTF-8):   Biblioteki statyczne gnomemm
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Gnomemm static libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne gnomemm.
 
 %prep
