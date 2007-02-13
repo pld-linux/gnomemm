@@ -1,5 +1,5 @@
 Summary:	C++ interface to GNOME libraries
-Summary(pl.UTF-8):   Interfejs w C++ do bibliotek GNOME
+Summary(pl.UTF-8):	Interfejs w C++ do bibliotek GNOME
 Name:		gnomemm
 Version:	1.2.2
 Release:	3
@@ -33,7 +33,7 @@ tych bibliotek.
 
 %package devel
 Summary:	Header files and some examples for gnomemm (gnome--)
-Summary(pl.UTF-8):   Pliki nagłówkowe i przykłady dla gnomemm (gnome--)
+Summary(pl.UTF-8):	Pliki nagłówkowe i przykłady dla gnomemm (gnome--)
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gnome-libs-devel
@@ -51,7 +51,7 @@ przykładów.
 
 %package static
 Summary:	gnomemm static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne gnomemm
+Summary(pl.UTF-8):	Biblioteki statyczne gnomemm
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
