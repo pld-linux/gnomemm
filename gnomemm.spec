@@ -65,7 +65,7 @@ Biblioteki statyczne gnomemm.
 %setup -q
 #%patch0 -p1
 #%patch1
-%patch2
+%patch -P2
 
 %build
 #rm -f missing
