@@ -63,8 +63,8 @@ Biblioteki statyczne gnomemm.
 
 %prep
 %setup -q
-#%patch0 -p1
-#%patch1
+#%%patch0 -p1
+#%%patch1
 %patch -P2
 
 %build
